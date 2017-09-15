@@ -34,12 +34,11 @@ double *betweenness(tGraph *graph){
     int i,j;
     
     int maxVertex = getMaxVertex(graph);
-    printf("Max: %d\n", maxVertex);
     
     tSimpleLinkedList *queue = newSimpleLinkedList();
     tStack *stack = newStack();
     
-    int dist[maxVertex][maxVertex];
+    double dist[maxVertex][maxVertex];
     double sigma[maxVertex][maxVertex];
     double delta[maxVertex][maxVertex];
     
@@ -53,8 +52,6 @@ double *betweenness(tGraph *graph){
     for(i = 0; i < maxVertex; i++){
     	
     	if(isInstantiated(graph,i)){
-    		
-    		printf("NoReal: %d\n", i);
 	        
 	        for(j = 0; j<maxVertex; j++){
 	            
