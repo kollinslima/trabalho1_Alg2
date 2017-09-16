@@ -108,6 +108,9 @@ double *betweenness(tGraph *graph){
     	}
     }
     
+    freeStack(&stack);
+    freeSimpleLinkedList(&queue);
+    
     return centrality;
 }
 
