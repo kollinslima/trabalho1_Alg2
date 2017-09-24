@@ -29,11 +29,9 @@ OBS: O nome do arquivo de entrada deve ser exatamente "Entrada.txt", salvo na me
 */
 
 int main() {
-    int i;
-
     printf("...Ano 2020...\n");
-    printf("ACABOOOOOOU!!! Formados!\n\n");
-    printf("10 anos depois... Festa da EngComp 016...\n");
+    printf("ACABOOOOOOU!!! Enfim formados!\n\n");
+    printf("10 anos depois... Festa do Reencontro da EngComp 016...\n");
 
 
 /** Abertura do Arquivo de Entrada **/
@@ -46,36 +44,33 @@ int main() {
 /** Leitura das características do grafo **/
     printf("...Lendo características do grafo...\n\n");
 
-
-
-    // Linha 1 - N e M - número de cidades/vértices e número de estradas/arestas
+    // Leitura da LINHA 1 do arquivo txt - número de cidades e de estradas do grafo
+    // (formato: "N" e "M")
 	int n, m;
 	fscanf(arq, "%d %d", &n, &m);
-    if (n < 2 || n> 50) {
+    if (n < 2 || n > 50) { // restrição de no mínimo duas cidades e no máximo 50 cidades no grafo
         printf("Erro: N = %d", n);
         exit(0);
-	} else if (m < 1 || m > pow(n,2)) {
+	} else if (m < 1 || m > pow(n,2)) { // restrição de no mínimo uma estrada e no máximo N²
         printf("Erro: M = %d", m);
         exit(0);
 	}
-    printf(" %d cidades e %d estradas\n\n", n, m);
+    printf(" GRAFO COM: %d cidades e %d estradas\n\n", n, m);
 
 
-    // Cria um grafo
+    // Cria um grafo com N cidades
     tGraph *graph = newGraph(VECTOR_LIST,n);
-
-    // Insere os vértices no grafo
-    for (i = 0; i < getMaxVertex(graph); i++) {
+    for (i = 0; i < getMaxVertex(graph); i++) { // insere os vértices/cidades no grafo
         insertVertex(graph, i);
     }
 
 
-    // (Como vai fazer esse controle? Qual variável?)
-    // Linha 2 em diante - quantidade egressos em cada cidade
-    int qtdEgressos[n];
-    for (i = 0; i < getMaxVertex(graph); i++) {
+    // Leitura da LINHA 2 em diante do arquivo txt - quantidade egressos em cada cidade
+    int *qtdEgressos;
+    qtdEgressos = (int *) malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) {
         fscanf(arq, "%d", &qtdEgressos[i]);
-        if (qtdEgressos[i] < 0 || qtdEgressos[i] > 50) {
+        if (qtdEgressos[i] < 0 || qtdEgressos[i] > 50) { // restrição de no mínimo 0 egressos por cidade e no máximo 50
             printf("Erro: E = %d", qtdEgressos[i]);
             exit(0);
         }
@@ -84,26 +79,30 @@ int main() {
     printf("\n");
 
 
-    // Linhas depois - estradas (cidade1 cidade2 distância)
+    // Leitura das próximas linhas - estradas
+    // (formato: "cidade1" "cidade2" "distância")
     int id1, id2, d;
-    for (i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++) {
         fscanf(arq, "%d %d %d", &id1, &id2, &d);
-        if (id1 < 0 || id1 > getMaxVertex(graph)) {
+        if (id1 < 0 || id1 > n ) { // restrição de existência da cidade/vértice id1 - possível de 0 a 50
             printf("Erro: ID1 = %d", id1);
             exit(0);
-        } else if (id2 < 0 || id2 > getMaxVertex(graph)) {
+        } else if (id2 < 0 || id2 > n) { // restrição de existência da cidade/vértice id2 - possível de 0 a 50
             printf("Erro: ID2 = %d", id2);
             exit(0);
-        } else if (d < 0 || d > 100) {
+        } else if (d < 0 || d > 100) { // restrição da distância entre id1 e id2 ser entre 0km a 100km
             printf("Erro: D = %d", d);
             exit(0);
         }
-        insertArc(graph, id1, id2, d);
+        insertArc(graph, id1, id2, d); // insere a estrada/aresta no grafo
+        d = d * qtdEgressos[id1]; // peso da aresta é o cálculo da distância entre duas cidades em função da
+                                  // quantidade de egressos que irão se deslocar da cidade id1 para a cidade id2
         printf(" %d >>>>> %dkm >>>>> %d\n", id1, id2, d);
     }
     printf("\n");
 
-    fclose(arq);
+    free(qtdEgressos); // libera a memória alocada pela variável
+    fclose(arq); // final de uso do arquivo txt
 
 
 /** Cálculo da cidade mais adequada para Festa **/
@@ -113,7 +112,7 @@ int main() {
 
     // Critério 2: cidade intermediária
     printf(" CRITÉRIO 2: \n\n");
-  //criterio2(graph);
+    //criterio2(graph);
 
     return EXIT_SUCCESS;
 }
