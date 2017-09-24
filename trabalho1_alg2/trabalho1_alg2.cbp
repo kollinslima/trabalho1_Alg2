@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="trabalho1_alg2" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/trabalho1_alg2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/trabalho1_alg2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Graph/Makefile" />
+		<Unit filename="Graph/firstAdj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/freeGraph.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/getMaxVertex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/graph.h" />
+		<Unit filename="Graph/hasAdj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/insertArc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/insertVertex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/isAdj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/isInstantiated.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/newGraph.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/nextAdj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/removeArc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Graph/removeVertex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Makefile" />
+		<Unit filename="Queue/Makefile" />
+		<Unit filename="Queue/freeSimpleLinkedList.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue/isEmptyQueue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue/newNodeQueue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue/newSimpleLinkedList.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue/popSimpleLinkedList.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue/printSimpleLinkedList.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue/pushSimpleLinkedList.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue/queue.h" />
+		<Unit filename="Stack/Makefile" />
+		<Unit filename="Stack/freeStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/isEmptyStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/newNodeStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/newStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/popNodeStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/popStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/printStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/pushStack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Stack/stack.h" />
+		<Unit filename="betweenness.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="criterio1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="trabalho.h" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
