@@ -1,60 +1,77 @@
 #include<stdio.h>
 #include"graph.h"
 
-unsigned int nextAdj(tGraph *graph, unsigned int u, unsigned int lastAdj){
+tNodeAdj nextAdj(tGraph *graph, unsigned int u, unsigned int lastAdj){
+    
+    tNodeAdj auxNode;
     
     if(graph->graphType == MATRIX){
         if(u >= graph->tStruct.tMatrixAdj.max_vertices) {
              //Vertex is out of bounds
-            return OUT_OF_BOUND;
+            auxNode.key = OUT_OF_BOUND;
+            return auxNode;
         }
         else if(isInstantiated(graph,u)){
             
             int i;
             
             for (i = lastAdj+1; i < graph->tStruct.tMatrixAdj.max_vertices; i += 1){
-                if(graph->tStruct.tMatrixAdj.graph[u][i].tVertexMatrix.key)
-                    return i;
+                if(graph->tStruct.tMatrixAdj.graph[u][i].tVertexMatrix.key){
+                    auxNode.key = graph->tStruct.tMatrixAdj.graph[u][i].tVertexMatrix.key;
+                    auxNode.adjVertex = i;
+                    return auxNode;
+                }
+                    
             }
             
-            return OP_ERROR;
+            auxNode.key = OP_ERROR;
+            return auxNode;
             
         }
         else{
             //Vertex not valid (one or both vertex not instantiated)
-            return VERTEX_INVALID;   
+            auxNode.key = VERTEX_INVALID;
+            return auxNode;   
         }
     }
     else if(graph->graphType == VECTOR_LIST){
         if((u >= graph->tStruct.tVListAdj.max_vertices)) {
              //Vertex is out of bounds
-            return OUT_OF_BOUND;
+            auxNode.key = OUT_OF_BOUND;
+            return auxNode;
         }
         else if(isInstantiated(graph,u)){
                 
-            tNodeS *auxNode = graph->tStruct.tVListAdj.graph[u].tVertexVList.stackKey->top;
+            tNodeS *auxNodeGraph = graph->tStruct.tVListAdj.graph[u].tVertexVList.stackKey->top;
             
-            while(auxNode != NULL){
+            while(auxNodeGraph != NULL){
                 
-                if((*(tNodeVList*)auxNode->key).adjVertex == lastAdj){
+                if((*(tNodeVList*)auxNodeGraph->key).adjVertex == lastAdj){
                     
-                    auxNode = auxNode->next;
+                    auxNodeGraph = auxNodeGraph->next;
                     
-                    if(auxNode != NULL)
-                        return (*(tNodeVList*)auxNode->key).adjVertex;
-                    else
-                        return OP_ERROR;
+                    if(auxNodeGraph != NULL){
+                        auxNode = (*(tNodeVList*)auxNodeGraph->key);
+                        return auxNode;
+                    }
+                        //return (*(tNodeVList*)auxNodeGraph->key).adjVertex;
+                    else{
+                        auxNode.key = OP_ERROR;
+                        return auxNode;
+                    }
                 }
                 
-                auxNode = auxNode->next;
+                auxNodeGraph = auxNodeGraph->next;
             }
             
-            return OP_ERROR;
+            auxNode.key = OP_ERROR;
+            return auxNode;
                 
         }
         else{
             //Vertex not valid (one or both vertex not instantiated)
-            return VERTEX_INVALID;   
+            auxNode.key = VERTEX_INVALID;
+            return auxNode;   
         }
     }
 }

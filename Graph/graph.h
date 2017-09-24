@@ -16,6 +16,8 @@ typedef struct{
 	unsigned int adjVertex;
 }tNodeVList;
 
+typedef tNodeVList tNodeAdj;
+
 typedef union{
     
     struct{
@@ -49,7 +51,7 @@ typedef struct{
 	
 }tGraph;
 
-unsigned int firstAdj(tGraph *graph, unsigned int u);
+tNodeAdj firstAdj(tGraph *graph, unsigned int u);
 
 int freeGraph(tGraph **graph);
 
@@ -67,7 +69,7 @@ int isInstantiated(tGraph *graph, unsigned int u);
 
 tGraph *newGraph(eGraphType type, unsigned int max_vertices);
 
-unsigned int nextAdj(tGraph *graph, unsigned int u, unsigned int lastAdj);
+tNodeAdj nextAdj(tGraph *graph, unsigned int u, unsigned int lastAdj);
 
 double removeArc(tGraph *graph, unsigned int u, unsigned int v);
 
