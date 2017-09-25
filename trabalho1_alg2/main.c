@@ -99,7 +99,7 @@ int main() {
             printf("Erro: ID2 = %d", id2);
             exit(0);
         } else if (dG2 < 0 || dG2 > 100) { // restrição da distância entre id1 e id2 ser entre 0km a 100km
-            printf("Erro: D = %d", dG2);
+            printf("Erro: D = %lf", dG2);
             exit(0);
         }
         insertArc(graph2, id1, id2, dG2); // insere a estrada/aresta no Grafo 2
@@ -140,5 +140,9 @@ int main() {
 
 	printf("----------------------------------------------------\n\n");
 
+	freeGraph(&graph1);
+	freeGraph(&graph2);
+
     return EXIT_SUCCESS;
 }
+
