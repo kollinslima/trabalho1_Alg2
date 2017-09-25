@@ -23,7 +23,7 @@ int valorMin(int a,int b){
     }
 }
 
-double *criterio1(tGraph *graph){
+void criterio1(tGraph *graph){
 
 //**************Inicialização das estruturas******************
     int i,j,k;
@@ -146,10 +146,12 @@ double *criterio1(tGraph *graph){
 				menorElem = minVector[i];
 				vertCentral = i;
 			}
-			printf("Distancia[%d]: %d\n",i,minVector[i]);
+			//printf("Distancia[%d]: %d\n",i,minVector[i]);
 		}
 	}
 	printf("Vértice Central:%d , Menor Elemento: %d\n", vertCentral,menorElem);
+
+	return;
 }
 
 

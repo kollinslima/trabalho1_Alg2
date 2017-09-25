@@ -321,7 +321,7 @@ double betweenness(tGraph *graph, unsigned int vertex){
 //	insertArc(graph,5,1,7);
 //	*/
 //
-//
+///*
 //	insertVertex(graph,0);
 //	insertVertex(graph,1);
 //	insertVertex(graph,2);
@@ -346,9 +346,9 @@ double betweenness(tGraph *graph, unsigned int vertex){
 //
 //	insertArc(graph,4,5,1);
 //	insertArc(graph,5,4,1);
+//*/
 //
 //
-///*
 //	insertVertex(graph,0);
 //	insertVertex(graph,1);
 //	insertVertex(graph,2);
@@ -363,7 +363,7 @@ double betweenness(tGraph *graph, unsigned int vertex){
 //	insertArc(graph,1,2,60);
 //	insertArc(graph,2,3,10);
 //	insertArc(graph,3,4,20);
-//*/
+//
 //
 //	double result[MAX_VERTEX];
 //
