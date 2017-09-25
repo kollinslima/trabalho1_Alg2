@@ -58,13 +58,13 @@ int main() {
     printf(" GRAFO COM: %d cidades e %d estradas\n\n", n, m);
 
 
-    // Cria um Grafo 1 para o CRITÉRIO 1 (com N cidades) => ponderado com "distância * qtd egressos"
+    // Cria um Grafo 1 para o CRITÉRIO 1 (com N cidades) => ponderado com (distância * qtd egressos)
     tGraph *graph1 = newGraph(VECTOR_LIST,n);
     for (int i = 0; i < getMaxVertex(graph1); i++) { // insere os vértices/cidades no grafo
         insertVertex(graph1, i);
     }
 
-    // Cria um Grafo 2 para o CRITÉRIO 1 (com N cidades) => ponderado apenas com "distância"
+    // Cria um Grafo 2 para o CRITÉRIO 1 (com N cidades) => ponderado apenas com distância
     tGraph *graph2 = newGraph(VECTOR_LIST,n);
     for (int i = 0; i < getMaxVertex(graph2); i++) { // insere os vértices/cidades no grafo
         insertVertex(graph2, i);
@@ -88,7 +88,6 @@ int main() {
     // (formato: "cidade1" "cidade2" "distância")
     int id1, id2, dG1, dG2;
     for (int i = 0; i < m; i++) {
-        dG1 = 0;
         fscanf(arq, "%d %d %d", &id1, &id2, &dG2);
         dG1 = dG2;
         if (id1 < 0 || id1 > n ) { // restrição de existência da cidade/vértice id1 - possível de 0 a 50
@@ -105,7 +104,7 @@ int main() {
         dG1 = dG1 * qtdEgressos[id1]; // peso da aresta do Grafo 1 é o cálculo da distância entre duas cidades em função da
                                       // quantidade de egressos que irão se deslocar da cidade id1 para a cidade id2
         insertArc(graph1, id1, id2, dG1); // insere a estrada/aresta no Grafo 1
-        printf(" %d >>>>> %dkm >>>>> %d\n", id1, id2, dG1);
+        printf(" %d >>>>> %dkm >>>>> %d\n", id1, id2, dG1); // vai imprimir o Grafo 1
     }
     printf("\n");
 
