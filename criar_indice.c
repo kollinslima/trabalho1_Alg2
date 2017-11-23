@@ -16,21 +16,23 @@ int criar_indice (FILE *fd, FILE *fi, FILE *fl){
     int propo_r_child,
         error;
 
-    //abertura do arquivo de dados e de índice
+    //abertura do arquivo de dados
     fd = fopen(NOME_DADOS, "r");
     if(fd == NULL) {
-        printf("Error during the opening of data file\n");
         error = 1;
+        printf("Error during the opening of data file\n");
     }
 
+    //abertura do arquivo de índice
     fi = fopen(NOME_INDICE, "w+");
     if(fi == NULL) {
-        printf("Error during the opening of index file\n");
         error = 1;
+        printf("Error during the opening of index file\n");
     }
 
     //********************************************* início loop que percorre o arquivo todo
-    //while((token = strtok(buffer, delimiter)) != EOF) {
+    //PRECISA COLOCAR O LOOP
+
         //movendo o ponteiro para a posição do byte-offset corrente
         fseek(fd, insert_key.offset, SEEK_SET);
 
